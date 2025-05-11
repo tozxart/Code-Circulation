@@ -33,26 +33,26 @@ export default function TopBar() {
         background: "linear-gradient(to bottom, #2563eb, #3b82f6)",
         color: "white",
       }}>
-      <div className="container mx-auto flex items-center justify-between py-4 px-4">
-        <div className="flex items-center gap-2">
+      <div className="container mx-auto flex flex-col sm:flex-row items-center justify-between py-2 sm:py-4 px-2 sm:px-4 gap-2 sm:gap-0">
+        <div className="flex items-center gap-2 mb-2 sm:mb-0">
           <Image
             src="/images/logo.png"
             alt="Code Circulation Logo"
-            width={50}
-            height={50}
-            className="object-contain"
+            width={40}
+            height={40}
+            className="object-contain w-10 h-10 sm:w-[50px] sm:h-[50px]"
           />
-          <span className="text-xl font-bold">Code Circulation</span>
+          <span className="text-lg sm:text-xl font-bold">Code Circulation</span>
         </div>
-        <div className="flex items-center gap-4">
+        <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-4 w-full sm:w-auto">
           <Link
             href="/privacy-policy"
-            className="bg-white text-blue-600 hover:bg-blue-50 px-4 py-2 rounded-md font-medium transition-colors shadow-sm border border-transparent hover:border-blue-200">
+            className="bg-white text-blue-600 hover:bg-blue-50 px-3 py-1.5 sm:px-4 sm:py-2 rounded-md font-medium transition-colors shadow-sm border border-transparent hover:border-blue-200 w-full sm:w-auto text-center">
             سياسة الخصوصية
           </Link>
           <Link
             href="/terms"
-            className="bg-white text-blue-600 hover:bg-blue-50 px-4 py-2 rounded-md font-medium transition-colors shadow-sm border border-transparent hover:border-blue-200">
+            className="bg-white text-blue-600 hover:bg-blue-50 px-3 py-1.5 sm:px-4 sm:py-2 rounded-md font-medium transition-colors shadow-sm border border-transparent hover:border-blue-200 w-full sm:w-auto text-center">
             شروط الاستخدام
           </Link>
         </div>
