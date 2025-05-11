@@ -3,10 +3,12 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
+import { HiMenu } from "react-icons/hi";
 
 export default function TopBar() {
   const [show, setShow] = useState(true);
   const lastScroll = useRef(0);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -33,29 +35,57 @@ export default function TopBar() {
         background: "linear-gradient(to bottom, #2563eb, #3b82f6)",
         color: "white",
       }}>
-      <div className="container mx-auto flex flex-col sm:flex-row items-center justify-between py-2 sm:py-4 px-2 sm:px-4 gap-2 sm:gap-0">
-        <div className="flex items-center gap-2 mb-2 sm:mb-0">
-          <Image
-            src="/images/logo.png"
-            alt="Code Circulation Logo"
-            width={40}
-            height={40}
-            className="object-contain w-10 h-10 sm:w-[50px] sm:h-[50px]"
-          />
-          <span className="text-lg sm:text-xl font-bold">Code Circulation</span>
+      <div className="container mx-auto flex flex-row items-center justify-between py-1.5 sm:py-4 px-2 sm:px-4 gap-2 relative">
+        {/* Hamburger for mobile */}
+        <button
+          className="sm:hidden p-2 focus:outline-none"
+          onClick={() => setMenuOpen((open) => !open)}
+          aria-label="Open menu">
+          <HiMenu className="w-7 h-7" />
+        </button>
+        {/* Centered logo */}
+        <div className="flex-1 flex justify-center items-center">
+          <div className="flex items-center gap-1 sm:gap-2">
+            <Image
+              src="/images/logo.png"
+              alt="Code Circulation Logo"
+              width={32}
+              height={32}
+              className="object-contain w-8 h-8 sm:w-[50px] sm:h-[50px]"
+            />
+            <span className="text-base sm:text-xl font-bold">
+              Code Circulation
+            </span>
+          </div>
         </div>
-        <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-4 w-full sm:w-auto">
+        {/* Links: always visible on desktop, dropdown on mobile */}
+        <div className="hidden sm:flex flex-row items-center gap-1 sm:gap-4">
           <Link
             href="/privacy-policy"
-            className="bg-white text-blue-600 hover:bg-blue-50 px-3 py-1.5 sm:px-4 sm:py-2 rounded-md font-medium transition-colors shadow-sm border border-transparent hover:border-blue-200 w-full sm:w-auto text-center">
+            className="bg-white text-blue-600 hover:bg-blue-50 px-2 py-1 sm:px-4 sm:py-2 rounded-md font-medium transition-colors shadow-sm border border-transparent hover:border-blue-200 text-xs sm:text-base">
             سياسة الخصوصية
           </Link>
           <Link
             href="/terms"
-            className="bg-white text-blue-600 hover:bg-blue-50 px-3 py-1.5 sm:px-4 sm:py-2 rounded-md font-medium transition-colors shadow-sm border border-transparent hover:border-blue-200 w-full sm:w-auto text-center">
+            className="bg-white text-blue-600 hover:bg-blue-50 px-2 py-1 sm:px-4 sm:py-2 rounded-md font-medium transition-colors shadow-sm border border-transparent hover:border-blue-200 text-xs sm:text-base">
             شروط الاستخدام
           </Link>
         </div>
+        {/* Mobile dropdown menu */}
+        {menuOpen && (
+          <div className="absolute top-full left-0 w-full bg-white shadow-md flex flex-col items-center py-2 sm:hidden z-50">
+            <Link
+              href="/privacy-policy"
+              className="text-blue-600 hover:bg-blue-50 w-full text-center px-4 py-2 rounded-md font-medium transition-colors">
+              سياسة الخصوصية
+            </Link>
+            <Link
+              href="/terms"
+              className="text-blue-600 hover:bg-blue-50 w-full text-center px-4 py-2 rounded-md font-medium transition-colors">
+              شروط الاستخدام
+            </Link>
+          </div>
+        )}
       </div>
     </header>
   );
