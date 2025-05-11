@@ -1,8 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   output: "export",
-  basePath: "/Code-Circulation",
-  assetPrefix: "/Code-Circulation/",
   images: {
     unoptimized: true, // Required for static export with next/image
   },
