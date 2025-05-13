@@ -3,7 +3,6 @@ import "./globals.css";
 import type { Metadata } from "next";
 import { Cairo } from "next/font/google";
 import { ThemeProvider } from "@/components/theme-provider";
-import { Topbar } from "@/components/topbar";
 import { StagewiseToolbar } from "@stagewise/toolbar-next";
 
 const cairo = Cairo({ subsets: ["arabic", "latin"] });
@@ -30,7 +29,14 @@ export default function RootLayout({
           {process.env.NODE_ENV === "development" && (
             <StagewiseToolbar config={stagewiseConfig} />
           )}
-          <Topbar />
+          <header className="fixed top-0 left-0 right-0 z-50 py-2 bg-slate-800/90 shadow-md">
+            <div className="container mx-auto px-4 flex justify-between items-center">
+              <a href="/" className="font-bold text-lg">
+                Code Circulation
+              </a>
+              <div></div>
+            </div>
+          </header>
           <div className="pt-20">{children}</div>
         </ThemeProvider>
       </body>
