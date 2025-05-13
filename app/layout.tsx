@@ -2,9 +2,9 @@ import type React from "react";
 import "./globals.css";
 import type { Metadata } from "next";
 import { Cairo } from "next/font/google";
+import { ThemeProvider } from "@/components/theme-provider";
+import { Topbar } from "@/components/topbar";
 import { StagewiseToolbar } from "@stagewise/toolbar-next";
-import TopBar from "@/components/TopBar";
-import Footer from "@/components/ui/Footer";
 
 const cairo = Cairo({ subsets: ["arabic", "latin"] });
 
@@ -20,15 +20,19 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const stagewiseConfig = {
+    plugins: [],
+  };
   return (
     <html lang="ar" dir="rtl">
       <body className={cairo.className}>
-        {process.env.NODE_ENV === "development" && (
-          <StagewiseToolbar config={{ plugins: [] }} />
-        )}
-        <TopBar />
-        {children}
-        <Footer />
+        <ThemeProvider>
+          {process.env.NODE_ENV === "development" && (
+            <StagewiseToolbar config={stagewiseConfig} />
+          )}
+          <Topbar />
+          <div className="pt-20">{children}</div>
+        </ThemeProvider>
       </body>
     </html>
   );

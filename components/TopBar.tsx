@@ -1,92 +1,146 @@
-"use client";
+"use client"
 
-import Image from "next/image";
-import Link from "next/link";
-import { useEffect, useRef, useState } from "react";
-import { HiMenu } from "react-icons/hi";
+import { useState, useEffect } from "react"
+import Link from "next/link"
+import Image from "next/image"
+import { Menu, X, ChevronRight } from "lucide-react"
+import { ThemeToggle } from "./theme-toggle"
+import { usePathname } from "next/navigation"
+import { useTheme } from "next-themes"
 
-export default function TopBar() {
-  const [show, setShow] = useState(true);
-  const lastScroll = useRef(0);
-  const [menuOpen, setMenuOpen] = useState(false);
+export function Topbar() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [isScrolled, setIsScrolled] = useState(false)
+  const pathname = usePathname()
+  const { theme } = useTheme()
 
   useEffect(() => {
     const handleScroll = () => {
-      const currentScroll = window.scrollY;
-      if (currentScroll > lastScroll.current && show) {
-        // If scrolling down AND it's currently shown, then hide it
-        setShow(false);
-      } else if (currentScroll < lastScroll.current && !show) {
-        // If scrolling up AND it's currently hidden, then show it
-        setShow(true);
-      }
-      lastScroll.current = currentScroll <= 0 ? 0 : currentScroll; // Ensure lastScroll isn't negative
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [show]);
+      setIsScrolled(window.scrollY > 10)
+    }
+
+    window.addEventListener("scroll", handleScroll)
+    return () => window.removeEventListener("scroll", handleScroll)
+  }, [])
+
+  const getHeaderBgClass = () => {
+    if (isScrolled) {
+      if (theme === "root") return "bg-slate-800/90 backdrop-blur-md shadow-md"
+      if (theme === "blue") return "bg-blue-800/90 backdrop-blur-md shadow-md"
+      if (theme === "original") return "bg-indigo-800/90 backdrop-blur-md shadow-md"
+      return "bg-slate-800/90 backdrop-blur-md shadow-md" // default slate theme
+    }
+    return "bg-transparent"
+  }
+
+  const getMobileMenuBgClass = () => {
+    if (theme === "root") return "bg-slate-800"
+    if (theme === "blue") return "bg-blue-800"
+    if (theme === "original") return "bg-indigo-800"
+    return "bg-slate-800" // default slate theme
+  }
+
+  const getBorderClass = () => {
+    if (theme === "root") return "border-slate-700"
+    if (theme === "blue") return "border-blue-700"
+    if (theme === "original") return "border-indigo-700"
+    return "border-slate-700" // default slate theme
+  }
+
+  const getHoverClass = () => {
+    if (theme === "root") return "hover:text-emerald-300"
+    if (theme === "blue") return "hover:text-blue-300"
+    if (theme === "original") return "hover:text-indigo-300"
+    return "hover:text-emerald-300" // default slate theme
+  }
 
   return (
     <header
-      className={`fixed top-0 left-0 w-full z-50 transition-opacity duration-500 ${
-        show ? "opacity-100" : "opacity-0"
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${getHeaderBgClass()} ${
+        isScrolled ? "py-2" : "py-4"
       }`}
-      style={{
-        background: "linear-gradient(to bottom, #2563eb, #3b82f6)",
-        color: "white",
-      }}>
-      <div className="container mx-auto flex flex-row items-center justify-between py-1.5 sm:py-4 px-2 sm:px-4 gap-2 relative">
-        {/* Hamburger for mobile */}
-        <button
-          className="sm:hidden p-2 focus:outline-none"
-          onClick={() => setMenuOpen((open) => !open)}
-          aria-label="Open menu">
-          <HiMenu className="w-7 h-7" />
-        </button>
-        {/* Centered logo */}
-        <div className="flex-1 flex justify-center items-center">
-          <div className="flex items-center gap-1 sm:gap-2">
-            <Image
-              src="/images/logo.png"
-              alt="Code Circulation Logo"
-              width={32}
-              height={32}
-              className="object-contain w-8 h-8 sm:w-[50px] sm:h-[50px]"
-            />
-            <span className="text-base sm:text-xl font-bold">
-              Code Circulation
-            </span>
-          </div>
-        </div>
-        {/* Links: always visible on desktop, dropdown on mobile */}
-        <div className="hidden sm:flex flex-row items-center gap-1 sm:gap-4">
-          <Link
-            href="/privacy-policy"
-            className="bg-white text-blue-600 hover:bg-blue-50 px-2 py-1 sm:px-4 sm:py-2 rounded-md font-medium transition-colors shadow-sm border border-transparent hover:border-blue-200 text-xs sm:text-base">
-            سياسة الخصوصية
-          </Link>
-          <Link
-            href="/terms"
-            className="bg-white text-blue-600 hover:bg-blue-50 px-2 py-1 sm:px-4 sm:py-2 rounded-md font-medium transition-colors shadow-sm border border-transparent hover:border-blue-200 text-xs sm:text-base">
-            شروط الاستخدام
-          </Link>
-        </div>
-        {/* Mobile dropdown menu */}
-        {menuOpen && (
-          <div className="absolute top-full left-0 w-full bg-white shadow-md flex flex-col items-center py-2 sm:hidden z-50">
-            <Link
-              href="/privacy-policy"
-              className="text-blue-600 hover:bg-blue-50 w-full text-center px-4 py-2 rounded-md font-medium transition-colors">
-              سياسة الخصوصية
+    >
+      <div className="container mx-auto flex items-center justify-between px-4">
+        <Link href="/" className="flex items-center gap-2">
+          <Image
+            src="/images/logo.png"
+            alt="Code Circulation Logo"
+            width={isScrolled ? 40 : 50}
+            height={isScrolled ? 40 : 50}
+            className="object-contain transition-all duration-300"
+          />
+          <span className={`font-bold transition-all duration-300 ${isScrolled ? "text-lg" : "text-xl"}`}>
+            Code Circulation
+          </span>
+        </Link>
+
+        {/* Desktop Navigation */}
+        <div className="hidden md:flex items-center gap-6">
+          {pathname !== "/" && (
+            <Link href="/" className={`text-white ${getHoverClass()} transition-colors flex items-center gap-1`}>
+              <ChevronRight className="w-4 h-4" />
+              <span>الرئيسية</span>
             </Link>
-            <Link
-              href="/terms"
-              className="text-blue-600 hover:bg-blue-50 w-full text-center px-4 py-2 rounded-md font-medium transition-colors">
+          )}
+          {pathname !== "/terms" && (
+            <Link href="/terms" className={`text-white ${getHoverClass()} transition-colors`}>
               شروط الاستخدام
             </Link>
+          )}
+          {pathname !== "/privacy-policy" && (
+            <Link href="/privacy-policy" className={`text-white ${getHoverClass()} transition-colors`}>
+              سياسة الخصوصية
+            </Link>
+          )}
+          <ThemeToggle />
+        </div>
+
+        {/* Mobile Menu Button */}
+        <button className="md:hidden text-white p-2" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+          {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+        </button>
+      </div>
+
+      {/* Mobile Navigation */}
+      <div
+        className={`md:hidden absolute top-full left-0 right-0 ${getMobileMenuBgClass()} shadow-lg transition-all duration-300 overflow-hidden ${
+          isMenuOpen ? "max-h-64" : "max-h-0"
+        }`}
+      >
+        <div className="container mx-auto py-4 px-4 flex flex-col gap-4">
+          {pathname !== "/" && (
+            <Link
+              href="/"
+              className={`text-white ${getHoverClass()} transition-colors py-2 border-b ${getBorderClass()} flex items-center gap-1`}
+              onClick={() => setIsMenuOpen(false)}
+            >
+              <ChevronRight className="w-4 h-4" />
+              <span>الرئيسية</span>
+            </Link>
+          )}
+          {pathname !== "/terms" && (
+            <Link
+              href="/terms"
+              className={`text-white ${getHoverClass()} transition-colors py-2 border-b ${getBorderClass()}`}
+              onClick={() => setIsMenuOpen(false)}
+            >
+              شروط الاستخدام
+            </Link>
+          )}
+          {pathname !== "/privacy-policy" && (
+            <Link
+              href="/privacy-policy"
+              className={`text-white ${getHoverClass()} transition-colors py-2 border-b ${getBorderClass()}`}
+              onClick={() => setIsMenuOpen(false)}
+            >
+              سياسة الخصوصية
+            </Link>
+          )}
+          <div className="py-2">
+            <ThemeToggle />
           </div>
-        )}
+        </div>
       </div>
     </header>
-  );
+  )
 }

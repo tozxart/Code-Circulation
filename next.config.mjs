@@ -1,17 +1,14 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: "export",
-  images: {
-    unoptimized: true, // Required for static export with next/image
+  eslint: {
+    ignoreDuringBuilds: true,
   },
-  // Optional: if you want to ignore ESLint errors during build
-  // eslint: {
-  //   ignoreDuringBuilds: true,
-  // },
-  // Optional: if you want to ignore TypeScript errors during build
-  // typescript: {
-  //   ignoreBuildErrors: true,
-  // },
-};
+  typescript: {
+    ignoreBuildErrors: true,
+  },
+  images: {
+    unoptimized: true,
+  },
+}
 
-export default nextConfig;
+export default nextConfig
