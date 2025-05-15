@@ -10,6 +10,8 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
+  basePath: process.env.GITHUB_ACTIONS ? "/Code-Circulation" : "",
+  assetPrefix: process.env.GITHUB_ACTIONS ? "/Code-Circulation/" : "",
 };
 
 export default nextConfig;
