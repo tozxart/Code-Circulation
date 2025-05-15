@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Menu, X, ChevronRight } from "lucide-react";
-import { ThemeToggle } from "./theme-toggle";
+import { ThemeToggle } from "../components/theme-toggle";
 import { usePathname } from "next/navigation";
 import { useTheme } from "next-themes";
 
