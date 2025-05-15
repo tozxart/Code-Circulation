@@ -34,6 +34,15 @@ jobs:
           node-version: "20" # Or your preferred Node.js version
           cache: "pnpm"
 
+      - name: Setup Next.js Cache
+        uses: actions/cache@v3
+        with:
+          path: |
+            .next/cache
+          key: ${{ runner.os }}-nextjs-${{ hashFiles('**/pnpm-lock.yaml') }}-${{ hashFiles('**/*.js', '**/*.jsx', '**/*.ts', '**/*.tsx') }}
+          restore-keys: |
+            ${{ runner.os }}-nextjs-${{ hashFiles('**/pnpm-lock.yaml') }}-
+
       - name: Install dependencies 🔧
         run: pnpm install
 
@@ -41,6 +50,8 @@ jobs:
         # The `basePath` and `assetPrefix` in next.config.mjs will be used
         # `output: 'export'` in next.config.mjs ensures static export to './out'
         run: pnpm run build
+        env:
+          GITHUB_ACTIONS: true
 
       - name: Setup Pages ⚙️
         uses: actions/configure-pages@v5

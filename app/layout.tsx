@@ -2,8 +2,8 @@ import type React from "react";
 import "./globals.css";
 import type { Metadata } from "next";
 import { Cairo } from "next/font/google";
-import { ThemeProvider } from "@/components/theme-provider";
-import { Topbar } from "@/components/Topbar";
+import { ThemeProvider } from "../components/theme-provider";
+import { Topbar } from "../components/Topbar";
 import { StagewiseToolbar } from "@stagewise/toolbar-next";
 
 const cairo = Cairo({ subsets: ["arabic", "latin"] });
