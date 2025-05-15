@@ -63,7 +63,7 @@ export function Topbar() {
       <div className="container mx-auto flex items-center justify-between px-4">
         <Link href="/" className="flex items-center gap-2">
           <Image
-            src="/placeholder-logo.png"
+            src="/images/logo.png"
             alt="Code Circulation Logo"
             width={isScrolled ? 40 : 50}
             height={isScrolled ? 40 : 50}
