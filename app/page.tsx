@@ -21,6 +21,7 @@ import {
   Settings,
 } from "lucide-react";
 import Footer from "@/components/footer";
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 
 export default function Home() {
   return (
@@ -49,6 +50,24 @@ export default function Home() {
             قريباً على Windows
           </button>
         </div>
+      </section>
+
+      {/* Disclaimer Section */}
+      <section className="container mx-auto py-8 px-4 text-center">
+        <Alert
+          variant="default"
+          className="max-w-3xl mx-auto bg-background/80 border-border/50 backdrop-blur-sm">
+          <AlertTriangle className="h-4 w-4" />
+          <AlertTitle className="font-bold text-lg text-right">
+            إخلاء مسؤولية وإفصاح عن مصدر المعلومات
+          </AlertTitle>
+          <AlertDescription className="text-right">
+            هذا التطبيق لا يمثل أي جهة حكومية. تم تطويره كأداة تعليمية مستقلة.
+            جميع المعلومات والمحتويات التعليمية مستمدة من "مجلة الطرقات
+            التونسية" والمصادر الرسمية المتاحة للجمهور. التطبيق ليس له أي انتماء
+            حكومي.
+          </AlertDescription>
+        </Alert>
       </section>
 
       {/* App Preview */}

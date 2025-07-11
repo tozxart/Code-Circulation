@@ -1,6 +1,6 @@
-import Link from "next/link"
-import { ChevronRight } from "lucide-react"
-import Footer from "@/components/footer"
+import Link from "next/link";
+import { ChevronRight } from "lucide-react";
+import Footer from "@/components/footer";
 
 export default function Terms() {
   return (
@@ -9,8 +9,7 @@ export default function Terms() {
       <div className="container mx-auto flex justify-center mt-4">
         <Link
           href="/"
-          className="bg-primary text-white hover:bg-primary/90 px-6 py-2 rounded-md font-medium transition-colors shadow flex items-center gap-2"
-        >
+          className="bg-primary text-white hover:bg-primary/90 px-6 py-2 rounded-md font-medium transition-colors shadow flex items-center gap-2">
           <ChevronRight className="w-4 h-4" />
           عودة للرئيسية
         </Link>
@@ -25,7 +24,18 @@ export default function Terms() {
           <section className="mb-8 text-right">
             <h2 className="text-2xl font-bold mb-4">مقدمة</h2>
             <p className="mb-4 text-muted-foreground">
-              مرحبًا بك في Code Circulation. باستخدامك لهذا الموقع، فإنك توافق على الالتزام بالشروط والأحكام التالية:
+              مرحبًا بك في Code Circulation. باستخدامك لهذا الموقع، فإنك توافق
+              على الالتزام بالشروط والأحكام التالية:
+            </p>
+          </section>
+          {/* Non-government disclaimer */}
+          <section className="mb-8 text-right">
+            <h2 className="text-2xl font-bold mb-4">
+              تنويه عدم الانتماء الحكومي
+            </h2>
+            <p className="mb-4 text-muted-foreground">
+              هذا التطبيق تعليمي مستقل وغير تابع لأي جهة حكومية. تعتمد المعلومات
+              على "مجلة الطرقات التونسية" والمصادر الرسمية المتاحة.
             </p>
           </section>
           <section className="mb-8 text-right">
@@ -41,7 +51,9 @@ export default function Terms() {
             <p className="mb-4 text-muted-foreground">
               إذا كان لديك أي أسئلة حول الشروط، يرجى التواصل معنا على:
               <br />
-              <a href="mailto:rayen.fallag@gmail.com" className="text-primary hover:underline">
+              <a
+                href="mailto:rayen.fallag@gmail.com"
+                className="text-primary hover:underline">
                 rayen.fallag@gmail.com
               </a>
             </p>
@@ -51,11 +63,15 @@ export default function Terms() {
 
       {/* Decorative elements */}
       <div className="container mx-auto relative">
-        <div className="absolute -top-10 left-10 w-16 h-16 text-primary opacity-50 text-4xl">✦</div>
-        <div className="absolute -bottom-10 right-10 w-16 h-16 text-primary opacity-50 text-4xl">✦</div>
+        <div className="absolute -top-10 left-10 w-16 h-16 text-primary opacity-50 text-4xl">
+          ✦
+        </div>
+        <div className="absolute -bottom-10 right-10 w-16 h-16 text-primary opacity-50 text-4xl">
+          ✦
+        </div>
       </div>
 
       <Footer />
     </div>
-  )
+  );
 }

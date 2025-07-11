@@ -19,6 +19,12 @@ export default function Footer() {
         <p className="text-blue-200 text-center md:text-right mb-4 md:mb-0">
           تطبيق شامل لتعليم القيادة وقواعد المرور وإشارات الطريق.
         </p>
+        {/* Government affiliation disclaimer */}
+        <p className="text-blue-200 text-center md:text-right text-xs md:text-sm max-w-xl">
+          تنويه: هذا التطبيق تعليمي مستقل غير تابع لأي جهة حكومية. يتمُّ اعتماد
+          المعلومات الواردة من "مجلة الطرقات التونسية" والمصادر الرسمية المتاحة
+          للعموم.
+        </p>
         <div className="flex flex-col items-center gap-4">
           {/* Social Icons */}
           <div className="flex gap-2">
