@@ -5,8 +5,29 @@ import Image from "next/image";
 import { Mail, Twitter, Facebook, Instagram } from "lucide-react";
 import { useTheme } from "next-themes";
 
-export default function Footer() {
+type FooterProps = {
+  app?: "code-circulation" | "royal-joker" | "portal";
+  lang?: "ar" | "en";
+};
+
+export default function Footer({
+  app = "code-circulation",
+  lang = "ar",
+}: FooterProps) {
   const { theme } = useTheme();
+  const isEnglish = lang === "en";
+
+  const legalSuffix = app === "royal-joker"
+    ? isEnglish
+      ? "?app=royal-joker&lang=en"
+      : "?app=royal-joker"
+    : app === "portal"
+      ? isEnglish
+        ? "?app=royal-joker&lang=en"
+        : "?app=code-circulation"
+      : "?app=code-circulation";
+
+  const deleteSuffix = isEnglish ? "?lang=en" : "";
 
   // Dynamically set classes based on theme
   const getBgClass = () => {
@@ -49,18 +70,32 @@ export default function Footer() {
             height={40}
             className="object-contain"
           />
-          <span className="text-xl font-bold text-white">Code Circulation</span>
+          <span className="text-xl font-bold text-white">{app === "portal" ? "MobUs" : "Code Circulation"}</span>
         </div>
         <p
-          className={`${getTextClass()} text-center md:text-right mb-4 md:mb-0`}>
-          تطبيق شامل لتعليم القيادة وقواعد المرور وإشارات الطريق.
+          className={`${getTextClass()} text-center ${isEnglish ? "md:text-left" : "md:text-right"} mb-4 md:mb-0`}>
+          {app === "royal-joker"
+            ? isEnglish
+              ? "Official legal pages for Royal Joker."
+              : "صفحات قانونية رسمية لتطبيق Royal Joker."
+            : app === "portal"
+              ? isEnglish
+                ? "Official website for MobUs apps."
+                : "الموقع الرسمي لتطبيقات MobUs."
+            : "تطبيق شامل لتعليم القيادة وقواعد المرور وإشارات الطريق."}
         </p>
         {/* Government affiliation disclaimer */}
         <p
-          className={`${getTextClass()} text-center md:text-right text-xs md:text-sm max-w-xl`}>
-          تنويه: هذا التطبيق تعليمي مستقل غير تابع لأي جهة حكومية. يتمُّ اعتماد
-          المعلومات الواردة من "مجلة الطرقات التونسية" والمصادر الرسمية المتاحة
-          للعموم.
+          className={`${getTextClass()} text-center ${isEnglish ? "md:text-left" : "md:text-right"} text-xs md:text-sm max-w-xl`}>
+          {app === "royal-joker"
+            ? isEnglish
+              ? "Royal Joker is an independent game application."
+              : "Royal Joker تطبيق لعبة مستقل."
+            : app === "portal"
+              ? isEnglish
+                ? "MobUs company website and official links for all apps."
+                : "موقع شركة MobUs والروابط الرسمية لجميع التطبيقات."
+            : "تنويه: هذا التطبيق تعليمي مستقل غير تابع لأي جهة حكومية. يتمُّ اعتماد المعلومات الواردة من \"مجلة الطرقات التونسية\" والمصادر الرسمية المتاحة للعموم."}
         </p>
         <div className="flex flex-col items-center gap-4">
           {/* Social Icons */}
@@ -96,21 +131,26 @@ export default function Footer() {
           {/* Legal Links */}
           <div className="flex flex-col md:flex-row gap-4">
             <Link
-              href="/terms"
+              href={`/terms${legalSuffix}`}
               className={`${getTextClass()} hover:text-white transition-colors font-medium`}>
-              شروط الاستخدام
+              {isEnglish ? "Terms" : "شروط الاستخدام"}
             </Link>
             <Link
-              href="/privacy-policy"
+              href={`/privacy-policy${legalSuffix}`}
               className={`${getTextClass()} hover:text-white transition-colors font-medium`}>
-              سياسة الخصوصية
+              {isEnglish ? "Privacy Policy" : "سياسة الخصوصية"}
+            </Link>
+            <Link
+              href={`/delete-account${deleteSuffix}`}
+              className={`${getTextClass()} hover:text-white transition-colors font-medium`}>
+              {isEnglish ? "Delete Account" : "حذف الحساب"}
             </Link>
           </div>
         </div>
       </div>
       <div
         className={`border-t ${getBorderClass()} mt-8 pt-4 ${getFooterTextClass()} text-sm text-center`}>
-        © {new Date().getFullYear()} Code Circulation. جميع الحقوق محفوظة.
+        © {new Date().getFullYear()} {app === "royal-joker" ? "Royal Joker" : app === "portal" ? "MobUs Apps" : "Code Circulation"}. {isEnglish ? "All rights reserved." : "جميع الحقوق محفوظة."}
       </div>
     </footer>
   );
