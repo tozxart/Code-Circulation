@@ -17,15 +17,16 @@ export default function Footer({
   const { theme } = useTheme();
   const isEnglish = lang === "en";
 
-  const legalSuffix = app === "royal-joker"
-    ? isEnglish
-      ? "?app=royal-joker&lang=en"
-      : "?app=royal-joker"
-    : app === "portal"
+  const legalSuffix =
+    app === "royal-joker"
       ? isEnglish
         ? "?app=royal-joker&lang=en"
-        : "?app=code-circulation"
-      : "?app=code-circulation";
+        : "?app=royal-joker"
+      : app === "portal"
+        ? isEnglish
+          ? "?app=royal-joker&lang=en"
+          : "?app=code-circulation"
+        : "?app=code-circulation";
 
   const deleteSuffix = isEnglish ? "?lang=en" : "";
 
@@ -70,7 +71,9 @@ export default function Footer({
             height={40}
             className="object-contain"
           />
-          <span className="text-xl font-bold text-white">{app === "portal" ? "MobUs" : "Code Circulation"}</span>
+          <span className="text-xl font-bold text-white">
+            {app === "portal" ? "MobUs" : "Code Circulation"}
+          </span>
         </div>
         <p
           className={`${getTextClass()} text-center ${isEnglish ? "md:text-left" : "md:text-right"} mb-4 md:mb-0`}>
@@ -82,7 +85,7 @@ export default function Footer({
               ? isEnglish
                 ? "Official website for MobUs apps."
                 : "الموقع الرسمي لتطبيقات MobUs."
-            : "تطبيق شامل لتعليم القيادة وقواعد المرور وإشارات الطريق."}
+              : "تطبيق شامل لتعليم القيادة وقواعد المرور وإشارات الطريق."}
         </p>
         {/* Government affiliation disclaimer */}
         <p
@@ -95,7 +98,7 @@ export default function Footer({
               ? isEnglish
                 ? "MobUs company website and official links for all apps."
                 : "موقع شركة MobUs والروابط الرسمية لجميع التطبيقات."
-            : "تنويه: هذا التطبيق تعليمي مستقل غير تابع لأي جهة حكومية. يتمُّ اعتماد المعلومات الواردة من \"مجلة الطرقات التونسية\" والمصادر الرسمية المتاحة للعموم."}
+              : 'تنويه: هذا التطبيق تعليمي مستقل غير تابع لأي جهة حكومية. يتمُّ اعتماد المعلومات الواردة من "مجلة الطرقات التونسية" والمصادر الرسمية المتاحة للعموم.'}
         </p>
         <div className="flex flex-col items-center gap-4">
           {/* Social Icons */}
@@ -150,7 +153,13 @@ export default function Footer({
       </div>
       <div
         className={`border-t ${getBorderClass()} mt-8 pt-4 ${getFooterTextClass()} text-sm text-center`}>
-        © {new Date().getFullYear()} {app === "royal-joker" ? "Royal Joker" : app === "portal" ? "MobUs Apps" : "Code Circulation"}. {isEnglish ? "All rights reserved." : "جميع الحقوق محفوظة."}
+        © {new Date().getFullYear()}{" "}
+        {app === "royal-joker"
+          ? "Royal Joker"
+          : app === "portal"
+            ? "MobUs Apps"
+            : "Code Circulation"}
+        . {isEnglish ? "All rights reserved." : "جميع الحقوق محفوظة."}
       </div>
     </footer>
   );

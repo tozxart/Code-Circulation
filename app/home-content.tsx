@@ -31,10 +31,9 @@ export default function HomeContent() {
           variant="default"
           className="max-w-3xl mx-auto bg-background/80 border-border/50 backdrop-blur-sm">
           <AlertTriangle className="h-4 w-4" />
-          <AlertTitle className={`font-bold text-lg ${isEnglish ? "text-left" : "text-right"}`}>
-            {isEnglish
-              ? "About MobUs"
-              : "حول MobUs"}
+          <AlertTitle
+            className={`font-bold text-lg ${isEnglish ? "text-left" : "text-right"}`}>
+            {isEnglish ? "About MobUs" : "حول MobUs"}
           </AlertTitle>
           <AlertDescription className={isEnglish ? "text-left" : "text-right"}>
             {isEnglish
@@ -56,18 +55,22 @@ export default function HomeContent() {
       </section>
 
       <section className="container mx-auto py-8 px-4 grid md:grid-cols-3 gap-6">
-        <div className={`bg-card rounded-lg p-6 border border-border ${isEnglish ? "text-left" : "text-right"}`}>
+        <div
+          className={`bg-card rounded-lg p-6 border border-border ${isEnglish ? "text-left" : "text-right"}`}>
           <h2 className="text-2xl font-bold mb-2">Code Circulation TN</h2>
           <p className="text-muted-foreground mb-6">
             {isEnglish
               ? "Driving education app. This app remains Arabic-only."
               : "تطبيق تعليم القيادة. هذا التطبيق يبقى باللغة العربية فقط."}
           </p>
-          <div className={`flex flex-wrap gap-3 ${isEnglish ? "justify-start" : "justify-end"}`}>
+          <div
+            className={`flex flex-wrap gap-3 ${isEnglish ? "justify-start" : "justify-end"}`}>
             <Link
               href={`/code-circulation${portalLangSuffix}`}
               className="border border-border hover:bg-muted px-4 py-2 rounded-md font-medium transition-colors">
-              {isEnglish ? "Open App Main Page" : "افتح الصفحة الرئيسية للتطبيق"}
+              {isEnglish
+                ? "Open App Main Page"
+                : "افتح الصفحة الرئيسية للتطبيق"}
             </Link>
             <Link
               href="/privacy-policy?app=code-circulation"
@@ -82,18 +85,22 @@ export default function HomeContent() {
           </div>
         </div>
 
-        <div className={`bg-card rounded-lg p-6 border border-border ${isEnglish ? "text-left" : "text-right"}`}>
+        <div
+          className={`bg-card rounded-lg p-6 border border-border ${isEnglish ? "text-left" : "text-right"}`}>
           <h2 className="text-2xl font-bold mb-2">Code de la Route TN - B</h2>
           <p className="text-muted-foreground mb-6">
             {isEnglish
               ? "Traffic code learning app (Category B). This app remains Arabic-only."
               : "تطبيق تعلم قانون الطرقات (الصنف ب). هذا التطبيق يبقى باللغة العربية فقط."}
           </p>
-          <div className={`flex flex-wrap gap-3 ${isEnglish ? "justify-start" : "justify-end"}`}>
+          <div
+            className={`flex flex-wrap gap-3 ${isEnglish ? "justify-start" : "justify-end"}`}>
             <Link
               href={`/code-route-tn-b${portalLangSuffix}`}
               className="border border-border hover:bg-muted px-4 py-2 rounded-md font-medium transition-colors">
-              {isEnglish ? "Open App Main Page" : "افتح الصفحة الرئيسية للتطبيق"}
+              {isEnglish
+                ? "Open App Main Page"
+                : "افتح الصفحة الرئيسية للتطبيق"}
             </Link>
             <Link
               href="/privacy-policy?app=code-circulation"
@@ -108,18 +115,22 @@ export default function HomeContent() {
           </div>
         </div>
 
-        <div className={`bg-card rounded-lg p-6 border border-border ${isEnglish ? "text-left" : "text-right"}`}>
+        <div
+          className={`bg-card rounded-lg p-6 border border-border ${isEnglish ? "text-left" : "text-right"}`}>
           <h2 className="text-2xl font-bold mb-2">Royal Joker</h2>
           <p className="text-muted-foreground mb-6">
             {isEnglish
               ? "Multi-language legal pages for Google Play listing requirements."
               : "صفحات قانونية متعددة اللغات لتلبية متطلبات Google Play."}
           </p>
-          <div className={`flex flex-wrap gap-3 ${isEnglish ? "justify-start" : "justify-end"}`}>
+          <div
+            className={`flex flex-wrap gap-3 ${isEnglish ? "justify-start" : "justify-end"}`}>
             <Link
               href={`/royal-joker${portalLangSuffix}`}
               className="border border-border hover:bg-muted px-4 py-2 rounded-md font-medium transition-colors">
-              {isEnglish ? "Open App Main Page" : "افتح الصفحة الرئيسية للتطبيق"}
+              {isEnglish
+                ? "Open App Main Page"
+                : "افتح الصفحة الرئيسية للتطبيق"}
             </Link>
             <Link
               href={`/privacy-policy?app=royal-joker${royalJokerLangSuffix}`}

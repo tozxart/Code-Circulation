@@ -10,13 +10,19 @@ export default function RoyalJokerMainPage() {
           Official main page for Royal Joker legal and account management links.
         </p>
         <div className="flex flex-wrap justify-center gap-3">
-          <Link href="/privacy-policy?app=royal-joker" className="bg-primary text-primary-foreground hover:bg-primary/90 px-6 py-3 rounded-md font-medium transition-colors">
+          <Link
+            href="/privacy-policy?app=royal-joker"
+            className="bg-primary text-primary-foreground hover:bg-primary/90 px-6 py-3 rounded-md font-medium transition-colors">
             سياسة الخصوصية
           </Link>
-          <Link href="/terms?app=royal-joker" className="border border-border hover:bg-muted px-6 py-3 rounded-md font-medium transition-colors">
+          <Link
+            href="/terms?app=royal-joker"
+            className="border border-border hover:bg-muted px-6 py-3 rounded-md font-medium transition-colors">
             شروط الاستخدام
           </Link>
-          <Link href="/delete-account" className="border border-border hover:bg-muted px-6 py-3 rounded-md font-medium transition-colors">
+          <Link
+            href="/delete-account"
+            className="border border-border hover:bg-muted px-6 py-3 rounded-md font-medium transition-colors">
             حذف الحساب
           </Link>
         </div>
@@ -24,7 +30,8 @@ export default function RoyalJokerMainPage() {
 
       <section className="container mx-auto py-8 px-4 max-w-3xl text-center">
         <p className="text-muted-foreground">
-          This page is dedicated to Royal Joker. For English legal pages, use the language switch in the top bar.
+          This page is dedicated to Royal Joker. For English legal pages, use
+          the language switch in the top bar.
         </p>
       </section>
 

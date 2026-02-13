@@ -25,7 +25,8 @@ export default function CodeRouteBMainPage() {
           للصنف ب فقط
         </h1>
         <p className="text-gray-300 max-w-2xl mx-auto mb-8">
-          تعلم قانون الطرقات التونسية وإشارات الطريق مع تطبيق Code de la Route TN - B
+          تعلم قانون الطرقات التونسية وإشارات الطريق مع تطبيق Code de la Route
+          TN - B
         </p>
         <div className="flex flex-wrap justify-center gap-4">
           <button className="bg-white text-blue-600 hover:bg-blue-50 px-6 py-3 rounded-md font-medium transition-colors flex items-center gap-2">
@@ -109,7 +110,9 @@ export default function CodeRouteBMainPage() {
           </div>
         </div>
         <div className="text-right">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">كل ما تحتاجه لاختبار الصنف ب</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">
+            كل ما تحتاجه لاختبار الصنف ب
+          </h2>
           <p className="text-gray-300 mb-6">
             نقدم دروسًا وتمارين مخصصة للصنف ب، مع شرح واضح لقواعد الطريق
             والإشارات لمساعدتك على النجاح في الاختبار.
@@ -158,7 +161,9 @@ export default function CodeRouteBMainPage() {
                     data-theme-item
                     className="bg-slate-500 dark:bg-slate-600 blue:bg-blue-500 original:bg-indigo-500 p-2 rounded-lg flex flex-col items-center">
                     <Gauge className="w-8 h-8 text-white mb-1" />
-                    <p className="text-xs text-center text-white">عداد السرعة</p>
+                    <p className="text-xs text-center text-white">
+                      عداد السرعة
+                    </p>
                   </div>
                   <div
                     data-theme-item

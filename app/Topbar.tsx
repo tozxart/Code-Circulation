@@ -17,7 +17,8 @@ export function Topbar() {
   const showAppLogo = pathname.startsWith("/code-circulation");
   const activeApp = pathname.startsWith("/royal-joker")
     ? "royal-joker"
-    : pathname.startsWith("/code-circulation") || pathname.startsWith("/code-route-tn-b")
+    : pathname.startsWith("/code-circulation") ||
+        pathname.startsWith("/code-route-tn-b")
       ? "code-circulation"
       : searchParams.get("app") === "royal-joker"
         ? "royal-joker"
@@ -39,7 +40,11 @@ export function Topbar() {
         params.delete("lang");
       }
 
-      if (path === "/privacy-policy" || path === "/terms" || path === "/delete-account") {
+      if (
+        path === "/privacy-policy" ||
+        path === "/terms" ||
+        path === "/delete-account"
+      ) {
         params.set("app", activeApp);
       }
     }
@@ -75,7 +80,8 @@ export function Topbar() {
     if (isScrolled) {
       if (theme === "root") return "bg-slate-800/90 backdrop-blur-md shadow-md";
       if (theme === "blue") return "bg-blue-800/90 backdrop-blur-md shadow-md";
-      if (theme === "original") return "bg-indigo-800/90 backdrop-blur-md shadow-md";
+      if (theme === "original")
+        return "bg-indigo-800/90 backdrop-blur-md shadow-md";
       return "bg-slate-800/90 backdrop-blur-md shadow-md";
     }
     return "bg-transparent";
@@ -136,17 +142,23 @@ export function Topbar() {
             </Link>
           )}
           {pathname !== "/terms" && (
-            <Link href={buildHref("/terms")} className={`text-white ${getHoverClass()} transition-colors`}>
+            <Link
+              href={buildHref("/terms")}
+              className={`text-white ${getHoverClass()} transition-colors`}>
               {lang === "en" ? "Terms" : "شروط الاستخدام"}
             </Link>
           )}
           {pathname !== "/privacy-policy" && (
-            <Link href={buildHref("/privacy-policy")} className={`text-white ${getHoverClass()} transition-colors`}>
+            <Link
+              href={buildHref("/privacy-policy")}
+              className={`text-white ${getHoverClass()} transition-colors`}>
               {lang === "en" ? "Privacy" : "سياسة الخصوصية"}
             </Link>
           )}
           {pathname !== "/delete-account" && (
-            <Link href={buildHref("/delete-account")} className={`text-white ${getHoverClass()} transition-colors`}>
+            <Link
+              href={buildHref("/delete-account")}
+              className={`text-white ${getHoverClass()} transition-colors`}>
               {lang === "en" ? "Delete Account" : "حذف الحساب"}
             </Link>
           )}
@@ -158,7 +170,9 @@ export function Topbar() {
           <ThemeToggle />
         </div>
 
-        <button className="md:hidden text-white p-2" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+        <button
+          className="md:hidden text-white p-2"
+          onClick={() => setIsMenuOpen(!isMenuOpen)}>
           {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
       </div>
