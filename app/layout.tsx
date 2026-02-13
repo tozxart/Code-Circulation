@@ -16,9 +16,9 @@ export const metadata: Metadata = {
     'تعلم قواعد المرور وإشارات الطريق مع تطبيقنا الشامل لتعليم القيادة. تنويه: هذا التطبيق تعليمي مستقل وغير تابع لأي جهة حكومية، وتستند المعلومات إلى "مجلة الطرقات التونسية" والمصادر الرسمية.',
   generator: "v0.dev",
   icons: {
-    icon: "/icon",
-    shortcut: "/icon",
-    apple: "/icon",
+    icon: "/icon.svg",
+    shortcut: "/icon.svg",
+    apple: "/icon.svg",
   },
 };
 
